@@ -12,4 +12,8 @@ func _on_FileDialog_file_selected(path):
 
 
 func _on_ButtonExit_pressed():
-	pass
+	SceneSwitcher.change_scene(SceneSwitcher.owners_scene)
+	
+	
+func _ready():
+	var data = SceneSwitcher.get_param("data")

@@ -33,17 +33,6 @@ custom_constants/margin_top = 50
 custom_constants/margin_left = 35
 custom_constants/margin_bottom = 50
 
-[node name="ButtonExit" type="Button" parent="ScrollContainer/MarginContainer"]
-margin_left = 35.0
-margin_top = 50.0
-margin_right = 63.0
-margin_bottom = 70.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "<<"
-flat = true
-icon_align = 1
-
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
 margin_left = 35.0
 margin_top = 50.0
@@ -173,10 +162,23 @@ rect_min_size = Vector2( 150, 30 )
 theme = ExtResource( 3 )
 text = "Загрузить"
 
+[node name="ButtonExit" type="Button" parent="ScrollContainer/MarginContainer"]
+margin_left = 35.0
+margin_top = 50.0
+margin_right = 87.0
+margin_bottom = 70.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "<<<<<"
+flat = true
+icon_align = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 22.0
+margin_bottom = 60.0
 custom_constants/margin_right = 35
 custom_constants/margin_top = 50
 custom_constants/margin_left = 35
@@ -185,13 +187,13 @@ custom_constants/margin_bottom = 50
 [node name="FileDialog" type="FileDialog" parent="MarginContainer"]
 margin_left = 35.0
 margin_top = 50.0
-margin_right = 989.0
-margin_bottom = 550.0
+margin_right = 1011.0
+margin_bottom = 610.0
 rect_min_size = Vector2( 200, 300 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
-window_title = "Загрузить фотографию"
+window_title = "Открыть файл"
 resizable = true
 dialog_text = "Загрузить фотографию"
 dialog_autowrap = true
@@ -199,6 +201,6 @@ mode = 0
 access = 2
 show_hidden_files = true
 
-[connection signal="pressed" from="ScrollContainer/MarginContainer/ButtonExit" to="." method="_on_ButtonExit_pressed"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/PhotoContainer/VBoxContainer/CenterContainer3/LoadPhotoButton" to="." method="_on_LoadPhotoButton_pressed"]
+[connection signal="pressed" from="ScrollContainer/MarginContainer/ButtonExit" to="." method="_on_ButtonExit_pressed"]
 [connection signal="file_selected" from="MarginContainer/FileDialog" to="." method="_on_FileDialog_file_selected"]

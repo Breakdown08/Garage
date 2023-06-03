@@ -56,13 +56,13 @@ margin_bottom = 60.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/TitleContainer/CenterContainer"]
-margin_left = 228.0
-margin_right = 726.0
+margin_left = 243.0
+margin_right = 710.0
 margin_bottom = 60.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource( 1 )
-text = "Таблица собственников"
+text = "Реестр собственников"
 
 [node name="Table" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
