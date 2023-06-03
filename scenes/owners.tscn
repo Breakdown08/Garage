@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/themes/h1.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/table.tscn" type="PackedScene" id=2]
+
+[node name="Owners" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.188235, 0.690196, 0.909804, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 35
+custom_constants/margin_top = 50
+custom_constants/margin_left = 35
+custom_constants/margin_bottom = 50
+
+[node name="ButtonExit" type="Button" parent="ScrollContainer/MarginContainer"]
+margin_left = 35.0
+margin_top = 50.0
+margin_right = 63.0
+margin_bottom = 70.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "<<"
+flat = true
+icon_align = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+margin_left = 35.0
+margin_top = 50.0
+margin_right = 989.0
+margin_bottom = 550.0
+custom_constants/separation = 21
+
+[node name="TitleContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+margin_right = 954.0
+margin_bottom = 60.0
+
+[node name="CenterContainer" type="CenterContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/TitleContainer"]
+margin_right = 954.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/TitleContainer/CenterContainer"]
+margin_left = 228.0
+margin_right = 726.0
+margin_bottom = 60.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+text = "Таблица собственников"
+
+[node name="Table" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 81.0
+margin_right = 954.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
