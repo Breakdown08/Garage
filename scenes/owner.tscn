@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://src/img.PNG" type="Texture" id=1]
+[ext_resource path="res://src/placeholder.png" type="Texture" id=1]
 [ext_resource path="res://src/themes/h1.tres" type="Theme" id=2]
 [ext_resource path="res://src/themes/h2.tres" type="Theme" id=3]
 [ext_resource path="res://scripts/owner.gd" type="Script" id=4]
@@ -10,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 3 )
 script = ExtResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -17,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color( 0.188235, 0.690196, 0.909804, 1 )
+color = Color( 0.376471, 0.388235, 0.396078, 1 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 anchor_right = 1.0
@@ -25,7 +26,7 @@ anchor_bottom = 1.0
 
 [node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
 margin_right = 1012.0
-margin_bottom = 1053.0
+margin_bottom = 940.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 35
@@ -37,7 +38,7 @@ custom_constants/margin_bottom = 50
 margin_left = 35.0
 margin_top = 50.0
 margin_right = 977.0
-margin_bottom = 1003.0
+margin_bottom = 890.0
 custom_constants/separation = 21
 
 [node name="TitleContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
@@ -119,11 +120,11 @@ align = 1
 [node name="PhotoContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 margin_top = 247.0
 margin_right = 942.0
-margin_bottom = 953.0
+margin_bottom = 789.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/PhotoContainer"]
 margin_right = 942.0
-margin_bottom = 706.0
+margin_bottom = 542.0
 size_flags_horizontal = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/PhotoContainer/VBoxContainer"]
@@ -140,19 +141,26 @@ text = "Фото счетчика"
 [node name="CenterContainer2" type="CenterContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/PhotoContainer/VBoxContainer"]
 margin_top = 28.0
 margin_right = 942.0
-margin_bottom = 672.0
+margin_bottom = 508.0
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer/PhotoContainer/VBoxContainer/CenterContainer2"]
-margin_left = 141.0
-margin_right = 801.0
-margin_bottom = 644.0
+margin_left = 151.0
+margin_right = 791.0
+margin_bottom = 480.0
 texture = ExtResource( 1 )
 stretch_mode = 1
 
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/PhotoContainer/VBoxContainer/CenterContainer2"]
+visible = false
+margin_left = 471.0
+margin_top = 228.0
+margin_right = 471.0
+margin_bottom = 252.0
+
 [node name="CenterContainer3" type="CenterContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/PhotoContainer/VBoxContainer"]
-margin_top = 676.0
+margin_top = 512.0
 margin_right = 942.0
-margin_bottom = 706.0
+margin_bottom = 542.0
 
 [node name="LoadPhotoButton" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/PhotoContainer/VBoxContainer/CenterContainer3"]
 margin_left = 396.0
@@ -162,15 +170,40 @@ rect_min_size = Vector2( 150, 30 )
 theme = ExtResource( 3 )
 text = "Загрузить"
 
+[node name="ButtonsContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+margin_top = 810.0
+margin_right = 942.0
+margin_bottom = 840.0
+theme = ExtResource( 3 )
+
+[node name="DeleteButton" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+margin_right = 167.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+text = "Удалить"
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+margin_left = 171.0
+margin_right = 770.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.57
+
+[node name="SaveButton" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+margin_left = 774.0
+margin_right = 942.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+text = "Сохранить"
+
 [node name="ButtonExit" type="Button" parent="ScrollContainer/MarginContainer"]
 margin_left = 35.0
 margin_top = 50.0
-margin_right = 87.0
-margin_bottom = 70.0
+margin_right = 156.0
+margin_bottom = 80.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "<<<<<"
-flat = true
+text = "<< Вернуться"
 icon_align = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -201,6 +234,22 @@ mode = 0
 access = 2
 show_hidden_files = true
 
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="MarginContainer"]
+margin_left = 291.0
+margin_top = 277.0
+margin_right = 754.0
+margin_bottom = 382.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+popup_exclusive = true
+window_title = "Подтверждение..."
+dialog_text = "Вы уверены что хотите удалить этого собственника?
+Дальнейшее его восстановление невозможно..."
+
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/PhotoContainer/VBoxContainer/CenterContainer3/LoadPhotoButton" to="." method="_on_LoadPhotoButton_pressed"]
+[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/ButtonsContainer/DeleteButton" to="." method="_on_DeleteButton_pressed"]
+[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/ButtonsContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/ButtonExit" to="." method="_on_ButtonExit_pressed"]
 [connection signal="file_selected" from="MarginContainer/FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="popup_hide" from="MarginContainer/FileDialog" to="." method="_on_FileDialog_popup_hide"]
+[connection signal="confirmed" from="MarginContainer/ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]

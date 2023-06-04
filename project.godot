@@ -20,9 +20,12 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Garage"
-run/main_scene="res://scenes/owners.tscn"
-config/icon="res://icon.png"
+config/name="Гараж"
+run/main_scene="res://scenes/main.tscn"
+boot_splash/image="res://src/garage_logo.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://src/garage_logo.png"
 
 [autoload]
 

@@ -21,7 +21,7 @@ margin_top = 3.0
 margin_right = 80.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
-text = "test"
+text = "пусто"
 
 [node name="Id" type="Label" parent="IndexContainer"]
 visible = false
@@ -36,12 +36,12 @@ margin_bottom = 30.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="NameContainer"]
-margin_left = 186.5
+margin_left = 178.5
 margin_top = 3.0
-margin_right = 216.5
+margin_right = 224.5
 margin_bottom = 27.0
 size_flags_horizontal = 3
-text = "test"
+text = "пусто"
 
 [node name="GarageContainer" type="AspectRatioContainer" parent="."]
 margin_left = 491.0
@@ -51,12 +51,12 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 
 [node name="Label" type="Label" parent="GarageContainer"]
-margin_left = 45.5
+margin_left = 37.5
 margin_top = 3.0
-margin_right = 75.5
+margin_right = 83.5
 margin_bottom = 27.0
 size_flags_horizontal = 3
-text = "test"
+text = "пусто"
 
 [node name="PhotoContainer" type="AspectRatioContainer" parent="."]
 margin_left = 616.0

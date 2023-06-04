@@ -3,6 +3,7 @@ extends Node
 
 var profile_scene = preload("res://scenes/owner.tscn")
 var owners_scene = preload("res://scenes/owners.tscn")
+var main_scene = preload("res://scenes/main.tscn")
 # Private variable
 var _params = null
 
