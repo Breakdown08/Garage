@@ -24,7 +24,7 @@ margin_right = 1017.0
 margin_bottom = 58.0
 
 [node name="IndexContainer" type="AspectRatioContainer" parent="VBoxContainer/HeaderContainer/HBoxContainer"]
-margin_right = 79.0
+margin_right = 99.0
 margin_bottom = 51.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -33,29 +33,29 @@ stretch_mode = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/HeaderContainer/HBoxContainer/IndexContainer"]
 margin_top = 13.0
-margin_right = 79.0
+margin_right = 99.0
 margin_bottom = 37.0
 size_flags_horizontal = 3
 text = "№"
 
 [node name="NameContainer" type="AspectRatioContainer" parent="VBoxContainer/HeaderContainer/HBoxContainer"]
-margin_left = 83.0
-margin_right = 481.0
+margin_left = 103.0
+margin_right = 602.0
 margin_bottom = 51.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HeaderContainer/HBoxContainer/NameContainer"]
-margin_left = 173.5
+margin_left = 224.0
 margin_top = 13.0
-margin_right = 224.5
+margin_right = 275.0
 margin_bottom = 37.0
 size_flags_horizontal = 3
 text = "ФИО"
 
 [node name="GarageContainer" type="AspectRatioContainer" parent="VBoxContainer/HeaderContainer/HBoxContainer"]
-margin_left = 485.0
-margin_right = 604.0
+margin_left = 606.0
+margin_right = 756.0
 margin_bottom = 51.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -63,31 +63,16 @@ size_flags_stretch_ratio = 0.3
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/HeaderContainer/HBoxContainer/GarageContainer"]
-margin_right = 119.0
-margin_bottom = 51.0
+margin_top = -0.5
+margin_right = 150.0
+margin_bottom = 50.5
 size_flags_horizontal = 3
 text = "№ 
 ГАРАЖА"
 align = 1
 
-[node name="PhotoContainer" type="AspectRatioContainer" parent="VBoxContainer/HeaderContainer/HBoxContainer"]
-margin_left = 608.0
-margin_right = 807.0
-margin_bottom = 51.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="Label" type="Label" parent="VBoxContainer/HeaderContainer/HBoxContainer/PhotoContainer"]
-margin_left = 28.0
-margin_top = 13.0
-margin_right = 171.0
-margin_bottom = 37.0
-size_flags_horizontal = 3
-text = "ФОТО СЧЕТЧИКА"
-
 [node name="ProfileContainer" type="AspectRatioContainer" parent="VBoxContainer/HeaderContainer/HBoxContainer"]
-margin_left = 811.0
+margin_left = 760.0
 margin_right = 1010.0
 margin_bottom = 51.0
 size_flags_horizontal = 3
@@ -95,9 +80,9 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
 [node name="Label" type="Label" parent="VBoxContainer/HeaderContainer/HBoxContainer/ProfileContainer"]
-margin_left = 57.5
+margin_left = 83.0
 margin_top = 13.0
-margin_right = 141.5
+margin_right = 167.0
 margin_bottom = 37.0
 size_flags_horizontal = 3
 text = "ПРОФИЛЬ"

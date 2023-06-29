@@ -1,6 +1,7 @@
 extends Control
 
-onready var table = $ScrollContainer/MarginContainer/VBoxContainer/Table
+onready var table =  $VBoxContainer/Table
+
 
 func _ready():
 	pass

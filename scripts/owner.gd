@@ -13,13 +13,36 @@ func _on_LoadPhotoButton_pressed():
 	for item in Database.get_images():
 		counter_photo_field.texture = Database.load_image_from_data(item)
 
+
+# You can use this function in any Godot project, as long as it has a image file.
+func create_file_selected(filepath):
+	var image_file = load("res://test_image.jpg");
+	image_file = image_file.get_data();
+	
+	var new_file = File.new();
+	new_file.open(filepath, new_file.WRITE);
+	new_file.store_var(image_file);
+	new_file.close();
+
+# Now delete test_image.jpg, it's .import file, and it's files in the .import folder!
+# Then you can load and use the image from anywhere in the file system using the following code:
+# (It can even be a completely different project!)
+
+func load_file_selected(filepath):
+	var external_file = File.new()
+	
+	if (external_file.file_exists(filepath)):
+		external_file.open(filepath, external_file.READ)
+		var bytes = external_file.get_buffer(external_file.get_len())
+		var image = Image.new()
+		var data = image.load_png_from_buffer(bytes)
+		var texture = ImageTexture.new()
+		texture.create_from_image(image)
+		external_file.close()
+		return texture
+
 func _on_FileDialog_file_selected(path):
-	#var test_path = "C://Users/user/Desktop/SNIMOK.PNG"
-	print(path)
-	counter_photo_field.texture = load(path)
-	#var id_image = Database.save_image_to_db(counter_photo_field.texture)
-	#if null != id_image:
-	#	Database.set_image_to_owner(id_owner, id_image)
+	counter_photo_field.texture = load_file_selected(path)
 
 
 func _on_ButtonExit_pressed():
