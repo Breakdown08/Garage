@@ -25,6 +25,29 @@ func get_owners(id = null):
 	db.query(query)
 	return db.query_result
 	
+func get_payers(id = null):
+	var query = """
+		select
+		PAYERS.ID,
+		OWNERS.NAME,
+		OWNERS.GARAGE_NUMBER,
+		PAYERS.IS_CLOSED
+		from PAYERS 
+		join OWNERS on OWNERS.ID = PAYERS.ID_OWNER"""
+	if null != id:
+		query += " where PAYERS.id_period = %s" % [str(id)]
+	db.open_db()
+	db.query(query)
+	return db.query_result
+	
+func get_periods(id = null):
+	var query = "select * from period"
+	if null != id:
+		query += "where id = %s" % [str(id)]
+	db.open_db()
+	db.query(query)
+	return db.query_result
+	
 		
 func insert_data(name:String):
 	db.open_db()
@@ -101,3 +124,15 @@ func save_owner_data(id_owner, data):
 	var query = "update owners set name = '%s', garage_number = '%s', id_counter_photo = %s where id = %s" % [str(data["NAME"]), str(data["GARAGE_NUMBER"]), str(data["ID_COUNTER_PHOTO"]), str(id_owner)]
 	print(query)
 	db.query(query)
+	
+func add_payers_to_period(id_period):
+	db.open_db()
+	var query = "insert into PAYERS (ID_PERIOD, ID_OWNER, IS_CLOSED) select '%s', OWNERS.ID, 'false' from OWNERS" % [str(id_period)]
+	db.query(query)
+	
+	
+func create_new_period(title, amount):
+	db.open_db()
+	var query = "insert into PERIOD (TITLE, AMOUNT) values ('%s', '%s') RETURNING id" % [str(title), int(amount)]
+	db.query(query)
+	return db.query_result[0]["ID"]
