@@ -136,3 +136,9 @@ func create_new_period(title, amount):
 	var query = "insert into PERIOD (TITLE, AMOUNT) values ('%s', '%s') RETURNING id" % [str(title), int(amount)]
 	db.query(query)
 	return db.query_result[0]["ID"]
+	
+func get_payer_status(id_payer):
+	db.open_db()
+	var query = "SELECT IS_CLOSED FROM PAYERS WHERE PAYERS.ID = %s" % [str(id_payer)]
+	db.query(query)
+	return db.query_result[0]["IS_CLOSED"]
