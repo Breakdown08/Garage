@@ -9,6 +9,7 @@ export_presets.cfg
 *.dmg
 /android/
 
+build
 
 # Imported translations (automatically generated from CSV files)
 *.translation

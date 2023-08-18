@@ -3,13 +3,12 @@ extends Node
 const sqlite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
 
 var db
-var data_path = "res://data/db"
+var data_path = "res://data/database.db"
 
 
 func _ready():
 	db = sqlite.new()
 	db.path = data_path
-	
 	
 func print_data():
 	db.open_db()
@@ -36,7 +35,6 @@ func get_payers(id = null):
 		join OWNERS on OWNERS.ID = PAYERS.ID_OWNER"""
 	if null != id:
 		query += " where PAYERS.id_period = %s" % [str(id)]
-	print(query)
 	db.open_db()
 	db.query(query)
 	return db.query_result
@@ -123,7 +121,6 @@ func remove_owner(id):
 func save_owner_data(id_owner, data):
 	db.open_db()
 	var query = "update owners set name = '%s', garage_number = '%s', id_counter_photo = %s where id = %s" % [str(data["NAME"]), str(data["GARAGE_NUMBER"]), str(data["ID_COUNTER_PHOTO"]), str(id_owner)]
-	print(query)
 	db.query(query)
 	
 func add_payers_to_period(id_period):
@@ -146,7 +143,6 @@ func get_payer_status(id_payer):
 	
 func set_payer_status(id_payer, status):
 	db.open_db()
-	print("id_payer ", id_payer, " status ", status)
 	var query = "UPDATE PAYERS SET IS_CLOSED = '%s' WHERE PAYERS.ID = %s" % [str(status) ,str(id_payer)]
 	db.query(query)
 	

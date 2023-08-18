@@ -52,7 +52,6 @@ func _on_Tree_button_pressed(item, column, id):
 func calculate_period_amount(id_period):
 	var payers = Database.get_payers(id_period)
 	var amount = Database.get_period_amount(id_period)
-	print(amount)
 	var one_person_collection = int(amount / len(payers))
 	var current_amount = 0
 	for payer in payers:
@@ -85,7 +84,7 @@ func _on_NewPeriodButton_pressed():
 
 
 func _on_Tree_item_selected():
-	print(tree.get_selected())
+	pass
 	
 func get_all_children(root):
 	var stop_search = false
