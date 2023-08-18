@@ -36,6 +36,7 @@ func get_payers(id = null):
 		join OWNERS on OWNERS.ID = PAYERS.ID_OWNER"""
 	if null != id:
 		query += " where PAYERS.id_period = %s" % [str(id)]
+	print(query)
 	db.open_db()
 	db.query(query)
 	return db.query_result
@@ -142,3 +143,16 @@ func get_payer_status(id_payer):
 	var query = "SELECT IS_CLOSED FROM PAYERS WHERE PAYERS.ID = %s" % [str(id_payer)]
 	db.query(query)
 	return db.query_result[0]["IS_CLOSED"]
+	
+func set_payer_status(id_payer, status):
+	db.open_db()
+	print("id_payer ", id_payer, " status ", status)
+	var query = "UPDATE PAYERS SET IS_CLOSED = '%s' WHERE PAYERS.ID = %s" % [str(status) ,str(id_payer)]
+	db.query(query)
+	
+func get_period_amount(id_period):
+	db.open_db()
+	var query = "SELECT AMOUNT FROM PERIOD WHERE PERIOD.ID = %s" % [str(id_period)]
+	db.query(query)
+	return db.query_result[0]["AMOUNT"]
+	
