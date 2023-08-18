@@ -68,12 +68,14 @@ func _on_ConfirmationDialog_confirmed():
 
 
 func _on_SaveButton_pressed():
+	counter_photo_id.text = str(Database.save_image_to_db(counter_photo_field.texture))
 	var data = {
 		"NAME": str(name_field.text),
 		"GARAGE_NUMBER": str(garage_field.text),
 		"ID_COUNTER_PHOTO": str(counter_photo_id.text)
 	}
 	Database.save_owner_data(id_owner, data)
+	
 
 
 func _on_FileDialog_popup_hide():
