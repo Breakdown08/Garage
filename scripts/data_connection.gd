@@ -63,7 +63,7 @@ func save_image_to_db(texture:Texture):
 		return null
 	
 func load_image_from_data(data):
-	if null != data:
+	if data["DATA"]:
 		var image = Image.new()
 		image.create_from_data(
 			data["WIDTH"], 
@@ -106,7 +106,7 @@ func get_owner_with_image(id_owner):
 	db.open_db()
 	var query = "select * from owners left join images on images.id = owners.id_counter_photo where owners.id = %s" % [str(id_owner)]
 	db.query(query)
-	return db.query_result
+	return db.query_result[0]
 	
 func create_new_owner():
 	db.open_db()

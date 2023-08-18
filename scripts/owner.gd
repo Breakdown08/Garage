@@ -10,32 +10,25 @@ func _on_LoadPhotoButton_pressed():
 	var dialog = $MarginContainer/FileDialog
 	dialog.popup()
 	dialog.current_dir = OS.get_executable_path()
-	for item in Database.get_images():
-		counter_photo_field.texture = Database.load_image_from_data(item)
 
 
-# You can use this function in any Godot project, as long as it has a image file.
-func create_file_selected(filepath):
-	var image_file = load("res://test_image.jpg");
-	image_file = image_file.get_data();
-	
-	var new_file = File.new();
-	new_file.open(filepath, new_file.WRITE);
-	new_file.store_var(image_file);
-	new_file.close();
-
-# Now delete test_image.jpg, it's .import file, and it's files in the .import folder!
-# Then you can load and use the image from anywhere in the file system using the following code:
-# (It can even be a completely different project!)
+func get_file_extention_name(filepath):
+	var arr = str(filepath).split('/')
+	var filename = arr[len(arr) - 1]
+	return str(filename.split('.')[1]).to_lower()
 
 func load_file_selected(filepath):
 	var external_file = File.new()
-	
 	if (external_file.file_exists(filepath)):
 		external_file.open(filepath, external_file.READ)
 		var bytes = external_file.get_buffer(external_file.get_len())
 		var image = Image.new()
-		var data = image.load_png_from_buffer(bytes)
+		var extention = get_file_extention_name(filepath)
+		var data
+		if extention == "png":
+			data = image.load_png_from_buffer(bytes)
+		else:
+			data = image.load_jpg_from_buffer(bytes)
 		var texture = ImageTexture.new()
 		texture.create_from_image(image)
 		external_file.close()
@@ -56,13 +49,12 @@ func _ready():
 
 func update_fields(id_owner):
 	var data = Database.get_owner_with_image(id_owner)
-	var texture = Database.load_image_from_data(owner)
-	for owner in data:
-		name_field.text = str(owner["NAME"])
-		garage_field.text = str(owner["GARAGE_NUMBER"])
-		if null != texture:
-			counter_photo_field.texture = texture
-		counter_photo_id.text = str(owner["ID_COUNTER_PHOTO"])
+	var texture = Database.load_image_from_data(data)
+	name_field.text = str(data["NAME"])
+	garage_field.text = str(data["GARAGE_NUMBER"])
+	if null != texture:
+		counter_photo_field.texture = texture
+	counter_photo_id.text = str(data["ID_COUNTER_PHOTO"])
 	
 
 
